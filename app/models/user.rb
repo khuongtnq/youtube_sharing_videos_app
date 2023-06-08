@@ -24,6 +24,7 @@ class User < ApplicationRecord
 
 
   has_many :authentication_tokens, dependent: :destroy
+  has_many :notifications, dependent: :destroy
 
   def generate_jwt
     payload = {
