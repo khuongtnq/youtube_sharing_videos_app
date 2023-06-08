@@ -21,4 +21,26 @@ class User < ApplicationRecord
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+
+  has_many :authentication_tokens, dependent: :destroy
+
+  def generate_jwt
+    payload = {
+      id: id,
+      email: email,
+      exp: 1.day.from_now.to_i
+    }.merge info
+    access_token = JWT.encode(payload, Rails.application.secrets.secret_key_base)
+    authentication_token = self.authentication_tokens.create
+    authentication_token.digest!(access_token)
+    access_token
+  end
+
+  def info
+    {
+      id: id,
+      email: email
+    }
+  end
 end
