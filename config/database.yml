@@ -19,6 +19,9 @@ default: &default
   encoding: unicode
   # For details on connection pooling, see Rails configuration guide
   # https://guides.rubyonrails.org/configuring.html#database-pooling
+  host: <%= ENV['DB_HOST'] || "localhost" %>
+  username: <%= ENV['DB_USER'] || "postgres" %>
+  password: <%= ENV['DB_PASSWORD'] || "postgres" %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
