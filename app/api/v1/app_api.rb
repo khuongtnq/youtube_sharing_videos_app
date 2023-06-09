@@ -15,6 +15,7 @@ module V1
     namespace do
       namespace do
         mount V1::SessionApi
+        mount V1::VideoApi
       end
     end
 
@@ -40,6 +41,16 @@ module V1
 
       def authenticate!
         error!(I18n.t('devise.failure.unauthenticated'), 401) unless current_user
+      end
+
+      def pagination_dict(collection)
+        {
+          current_page: collection.current_page,
+          next_page: collection.next_page,
+          prev_page: collection.prev_page,
+          total_pages: collection.total_pages,
+          total_count: collection.total_count
+        }
       end
     end
   end
