@@ -30,7 +30,7 @@
   ```bash
   $ bundle install
   $ rails db:create
-  $ RACK_ENV=test bundle exec rspec
+  $ RACK_ENV=test bundle exec rails test
   ```
 
 * How to run application on docker
