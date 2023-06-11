@@ -74,6 +74,8 @@ GEM
     annotate (3.2.0)
       activerecord (>= 3.2, < 8.0)
       rake (>= 10.4, < 14.0)
+    ansi (1.5.0)
+    ast (2.4.2)
     bcrypt (3.1.18)
     bootsnap (1.16.0)
       msgpack (~> 1.2)
@@ -132,6 +134,7 @@ GEM
     io-console (0.6.0)
     irb (1.7.0)
       reline (>= 0.3.0)
+    iso8601 (0.13.0)
     jsonapi-renderer (0.2.2)
     jwt (2.7.0)
     kaminari (1.2.2)
@@ -173,10 +176,14 @@ GEM
       timeout
     net-smtp (0.3.3)
       net-protocol
+    net_http_timeout_errors (1.0.0)
     nio4r (2.5.9)
     nokogiri (1.15.2)
       mini_portile2 (~> 2.8.2)
       racc (~> 1.4)
+    oga (3.4)
+      ast
+      ruby-ll (~> 2.1)
     orm_adapter (0.5.0)
     pg (1.5.3)
     pry (0.14.2)
@@ -250,6 +257,9 @@ GEM
     roo (2.10.0)
       nokogiri (~> 1)
       rubyzip (>= 1.3.0, < 3.0.0)
+    ruby-ll (2.1.3)
+      ansi
+      ast
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
     sidekiq (7.1.1)
@@ -261,6 +271,10 @@ GEM
     timeout (0.3.2)
     tzinfo (2.0.6)
       concurrent-ruby (~> 1.0)
+    video_info (4.0.0)
+      iso8601 (~> 0.13.0)
+      net_http_timeout_errors (~> 1.0.0)
+      oga (~> 3.4)
     warden (1.2.9)
       rack (>= 2.0.9)
     websocket-driver (0.7.5)
@@ -294,6 +308,7 @@ DEPENDENCIES
   roo (~> 2.10.0)
   sidekiq (~> 7.1)
   tzinfo-data
+  video_info
 
 RUBY VERSION
    ruby 2.7.6p219

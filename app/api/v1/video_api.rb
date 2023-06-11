@@ -22,10 +22,11 @@ module V1
         begin
           is_video_existed = current_user.videos.find_by(url: params[:url])
           error!('url video is existed!', 422) if is_video_existed
-          video_info = Yt::Video.new url: params[:url]
-          title = video_info.title
-          description = video_info.description
-          thumbnail_url = video_info.thumbnail_url
+          VideoInfo.provider_api_keys = { youtube: 'AIzaSyDzstjY08e5enI7MgKaOHy4Ps-WwPCfJso'}
+          video_info = VideoInfo.new params[:url]
+          title = video_info.title || "default_title"
+          description = video_info.description || "default_description"
+          thumbnail_url = video_info.thumbnail_medium
           video = current_user.videos.new(url: params[:url], title: title,
                                           description: description, thumbnail_url: thumbnail_url)
           if video.save

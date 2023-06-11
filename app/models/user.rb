@@ -25,7 +25,7 @@ class User < ApplicationRecord
 
   has_many :authentication_tokens, dependent: :destroy
   has_many :notifications, dependent: :destroy
-  has_many :videos
+  has_many :videos, class_name: "Video", foreign_key: :sharer_id, dependent: :destroy
 
   def generate_jwt
     payload = {
