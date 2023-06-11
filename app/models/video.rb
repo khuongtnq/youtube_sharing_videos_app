@@ -12,6 +12,6 @@
 #  sharer_id     :integer          not null
 #
 class Video < ApplicationRecord
-  belongs_to :sharer, class_name: "User", foreign_key: "sharer_id"
+  belongs_to :sharer, class_name: "User", foreign_key: :sharer_id
   validates :title, :url, presence: true
 end
