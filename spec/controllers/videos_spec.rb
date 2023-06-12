@@ -1,17 +1,25 @@
 require 'rails_helper'
 
-RSpec.describe Video, type: :controller do
-  describe "get all questions route", :type => :request do
-    let!(:videos) {FactoryBot.create_list(:video, 10)}
-
-    before {get '/api/v1/videos'}
-
-    it 'returns all questions' do
-      expect(JSON.parse(response.body).size).to eq(10)
+RSpec.describe Videos, type: :controller do
+  describe "GET #show" do
+    before do
+      get :show, id: article.id
     end
 
-    it 'returns status code 200' do
+    let(:article) { Article.create(title: 'Hello World') }
+
+    it "returns http success" do
       expect(response).to have_http_status(:success)
+    end
+
+    it "response with JSON body containing expected Article attributes" do
+      hash_body = nil
+      expect { hash_body = JSON.parse(response.body).with_indifferent_access }.not_to raise_exception
+      expect(hash_body.keys).to match_array([:id, :title])
+      expect(hash_body).to match({
+                                   id: article.id,
+                                   title: 'Hello World'
+                                 })
     end
   end
 end
