@@ -9,7 +9,7 @@ module V1
         optional :per, type: Integer
       end
       get '/' do
-        videos = current_user.videos.order(status: :desc, created_at: :desc)
+        videos = current_user.videos.order(created_at: :desc)
         videos = videos.page(params[:page]).per(params[:per])
         render videos, meta: pagination_dict(videos)
       end
