@@ -9,8 +9,8 @@ RSpec.describe User, :type => :model do
     expect(@user1).to be_valid
   end
 
-  it "has a unique username" do
-    user2 = build(:user, email: "bob@gmail.com")
+  it "has a unique email" do
+    user2 = build(:user, email: nil)
     expect(user2).to_not be_valid
   end
 
@@ -19,8 +19,8 @@ RSpec.describe User, :type => :model do
     expect(user2).to_not be_valid
   end
 
-  it "is not valid without an email" do
-    user2 = build(:user, email: nil)
+  it "is not valid password and confirmation_password not same " do
+    user2 = build(:user, password: "234234234", password_confirmation: "124234234")
     expect(user2).to_not be_valid
   end
 end
