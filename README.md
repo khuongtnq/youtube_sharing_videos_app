@@ -31,6 +31,8 @@
   $ bundle install
   $ rails db:create
   $ RACK_ENV=test bundle exec rails test
+  $ RACK_ENV=test bundle exec rspec path/to/spec/file.rb
+
   ```
 
 * How to run application on docker
@@ -43,4 +45,9 @@
 
     - Open URL: http://localhost:3000
 
-## TODO
+## Done
+ - Feature User registration and login
+ - Feature Sharing YouTube videos api
+ - Implement the real-time notifications feature using ApplicationCable and background jobs
+ - Deploy the application and include the link to the site when submitting the project
+ - Docker configuration to run locally
