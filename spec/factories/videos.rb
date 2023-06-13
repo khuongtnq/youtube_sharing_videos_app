@@ -1,9 +1,9 @@
 FactoryBot.define do
   factory :video do
-    url { Faker::Internet.url(host: 'youtube') }
-    sharer { create(:user) }
-    description { Faker::Movie.quote }
-    title { Faker::Movie.title }
-    thumbnail_url { Faker::Internet.url(host: 'youtube') }
+    url { "https://www.youtube.com/watch?v=#{Faker::Alphanumeric.alpha(number: 10)}" }
+    title { Faker::Lorem.sentence }
+    description { Faker::Lorem.paragraph }
+    thumbnail_url { Faker::Internet.url }
+    association :sharer, factory: :user
   end
 end
