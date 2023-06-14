@@ -44,7 +44,10 @@
   ```
 
     - Open URL: http://localhost:3000
+## Test and Deploy
 
+Use the built-in continuous integration in Fly.io.
+* Domain: https://youtube-sharing-videos.fly.dev/api/v1/sign_up/
 ## Done
  - Feature User registration and login
  - Feature Sharing YouTube videos api
